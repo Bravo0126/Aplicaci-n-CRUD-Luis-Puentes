@@ -1,5 +1,6 @@
 # Aplicaci-n-CRUD-Luis-Puentes
 C - Create ("Crear") R - Read ("Leer") U - Update ("Actualizar") D - Delete ("Borrar")
+
 🔹 HTML
 Este archivo define la estructura básica de la aplicación. Tiene un formulario para ingresar tareas, un área donde se listan, un contador de tareas y enlaces al archivo de estilos y al script que maneja la lógica. El diseño es limpio y se organiza con etiquetas semánticas como <header>, <main> y <footer>.
 
