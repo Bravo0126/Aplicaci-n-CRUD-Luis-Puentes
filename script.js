@@ -1,3 +1,4 @@
+// Capturamos los elementos del DOM
 const taskForm = document.getElementById('task-form');
 const taskNameInput = document.getElementById('task-name');
 const taskDescriptionInput = document.getElementById('task-desc');
@@ -5,8 +6,10 @@ const taskList = document.getElementById('task-list');
 const taskIdInput = document.getElementById('task-id');
 const taskCount = document.getElementById('task-count');
 
+// Recuperamos tareas almacenadas en localStorage
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+// Función que renderiza las tareas en pantalla
 function renderTasks() {
   taskList.innerHTML = '';
   tasks.forEach(task => {
@@ -53,61 +56,51 @@ function renderTasks() {
   taskCount.textContent = `Tareas: ${tasks.length}`;
 }
 
+// Muestra u oculta la descripción de la tarea
 function toggleDescription(id) {
-  const taskItem = document.querySelector(`li[data-id="${id}"]`);
-  const descriptionDiv = taskItem.querySelector('.task-description');
-
-  document.querySelectorAll('.task-description').forEach(desc => {
-    if (desc !== descriptionDiv) {
-      desc.classList.remove('active');
-    }
-  });
-
-  descriptionDiv.classList.toggle('active');
+  const taskItem = document.querySelector(`[data-id="${id}"]`);
+  const description = taskItem.querySelector('.task-description');
+  description.classList.toggle('active');
 }
 
+// Cargar los datos de una tarea al formulario para editar
 function editTask(id) {
   const task = tasks.find(t => t.id === id);
-  if (task) {
-    taskIdInput.value = task.id;
-    taskNameInput.value = task.name;
-    taskDescriptionInput.value = task.description;
-    taskNameInput.focus();
+  taskIdInput.value = task.id;
+  taskNameInput.value = task.name;
+  taskDescriptionInput.value = task.description;
+}
+
+// Eliminar tarea
+function deleteTask(id) {
+  if (confirm('¿Deseas eliminar la tarea?')) {
+    tasks = tasks.filter(t => t.id !== id);
+    saveTasks();
+    renderTasks();
   }
 }
 
-function deleteTask(id) {
-  const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta tarea?');
-  if (!confirmDelete) return;
-
-  tasks = tasks.filter(t => t.id !== id);
-  saveTasks();
-  renderTasks();
-}
-
+// Guardar las tareas en el localStorage
 function saveTasks() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+// Manejo del envío del formulario
 taskForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const name = taskNameInput.value.trim();
-  const desc = taskDescriptionInput.value.trim();
+  const description = taskDescriptionInput.value.trim();
   const id = taskIdInput.value;
 
-  if (!name && !desc) {
-    alert('Por favor, completa el nombre y la descripción de la tarea.');
-    return;
-  }
-
+  // Validaciones
   if (!name) {
     alert('Por favor, ingresa el nombre de la tarea.');
     return;
   }
 
-  if (!desc) {
-    alert('Por favor, ingresa la descripción de la tarea.');
+  if (!description) {
+    alert('Por favor, ingresa la descripción.');
     return;
   }
 
@@ -115,24 +108,17 @@ taskForm.addEventListener('submit', (e) => {
     const index = tasks.findIndex(t => t.id === id);
     if (index !== -1) {
       tasks[index].name = name;
-      tasks[index].description = desc;
+      tasks[index].description = description;
     }
   } else {
-    tasks.push({ id: Date.now().toString(), name, description: desc });
+    tasks.push({ id: Date.now().toString(), name, description });
   }
 
   saveTasks();
   renderTasks();
   taskForm.reset();
+  taskIdInput.value = '';
 });
 
-document.addEventListener('click', function (e) {
-  const clickedInside = e.target.closest('.task-item');
-  if (!clickedInside) {
-    document.querySelectorAll('.task-description').forEach(desc => {
-      desc.classList.remove('active');
-    });
-  }
-});
-
+// Mostrar las tareas al cargar
 renderTasks();
