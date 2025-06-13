@@ -1,3 +1,4 @@
+/* Variables de colores y diseño */
 :root {
   --primary-color: #4a90e2;
   --secondary-color: #ffffff;
@@ -6,12 +7,14 @@
   --border-radius: 10px;
 }
 
+/* Reset de márgenes y paddings */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Estilo general del cuerpo */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--accent-color);
@@ -21,6 +24,7 @@ body {
   min-height: 100vh;
 }
 
+/* Encabezado y pie de página */
 header, footer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -29,6 +33,7 @@ header, footer {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Área principal centrada */
 main {
   flex: 1;
   padding: 2rem;
@@ -39,20 +44,24 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Margen inferior de títulos */
 h1, h2 {
   margin-bottom: 1rem;
 }
 
+/* Separación entre secciones */
 .form-section, .tasks-section {
   margin-bottom: 2rem;
 }
 
+/* Diseño del formulario */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Inputs y textarea */
 input[type="text"], textarea {
   padding: 0.75rem;
   border: 1px solid #ccc;
@@ -64,11 +73,13 @@ textarea {
   resize: vertical;
 }
 
+/* Grupo de botones */
 .button-group {
   display: flex;
   justify-content: center;
 }
 
+/* Estilo general de botones */
 button {
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -87,10 +98,12 @@ button:hover {
   opacity: 0.9;
 }
 
+/* Lista de tareas */
 #task-list {
   list-style: none;
 }
 
+/* Cada tarea */
 .task-item {
   background-color: var(--accent-color);
   border: 1px solid #ccc;
@@ -100,11 +113,13 @@ button:hover {
   cursor: pointer;
 }
 
+/* Título de tarea */
 .task-item h3 {
   margin: 0;
   font-size: 1.1rem;
 }
 
+/* Descripción de tarea oculta inicialmente */
 .task-description {
   display: none;
   margin-top: 0.5rem;
@@ -114,10 +129,12 @@ button:hover {
   font-size: 0.95rem;
 }
 
+/* Cuando está activa (visible) */
 .task-description.active {
   display: block;
 }
 
+/* Botones de acciones dentro de la tarea */
 .task-actions {
   margin-top: 0.75rem;
   display: flex;
@@ -125,6 +142,7 @@ button:hover {
   gap: 0.5rem;
 }
 
+/* Botón de editar */
 button.edit {
   background-color: #17a2b8;
 }
@@ -133,6 +151,7 @@ button.edit:hover {
   background-color: #138496;
 }
 
+/* Botón de eliminar */
 button.delete {
   background-color: #dc3545;
 }
@@ -141,6 +160,7 @@ button.delete:hover {
   background-color: #c82333;
 }
 
+/* Contador de tareas flotante */
 #task-count {
   font-size: 1.2rem;
   font-weight: bold;
@@ -155,6 +175,7 @@ button.delete:hover {
   z-index: 1000;
 }
 
+/* Pie de página siempre fijo abajo */
 footer {
   position: fixed;
   bottom: 0;
