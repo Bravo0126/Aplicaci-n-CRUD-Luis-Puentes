@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestor de Tareas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>GESTOR DE TAREAS</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <input type="text" id="task-name" placeholder="Nombre de la tarea" />
+        <textarea id="task-desc" placeholder="Descripción de la tarea"></textarea>
+        <div class="button-group">
+          <button type="submit"><i class="fas fa-plus"></i> Agregar / Actualizar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="tasks-section">
+      <ul id="task-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Gestor de Tareas SPA</p>
+  </footer>
+
+  <div id="task-count">Tareas: 0</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
