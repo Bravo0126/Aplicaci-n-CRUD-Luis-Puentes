@@ -4,37 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gestor de Tareas</title>
+  <!-- Enlazamos el archivo de estilos CSS -->
   <link rel="stylesheet" href="styles.css" />
+  <!-- Librería de iconos FontAwesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Encabezado de la página -->
   <header>
     <h1>GESTOR DE TAREAS</h1>
   </header>
 
   <main>
+    <!-- Sección del formulario para agregar o editar tareas -->
     <section class="form-section">
       <form id="task-form">
+        <!-- Campo oculto para almacenar el ID de la tarea (para editar) -->
         <input type="hidden" id="task-id" />
+        <!-- Campo para el nombre de la tarea -->
         <input type="text" id="task-name" placeholder="Nombre de la tarea" />
+        <!-- Campo para la descripción de la tarea -->
         <textarea id="task-desc" placeholder="Descripción de la tarea"></textarea>
         <div class="button-group">
+          <!-- Botón para agregar o actualizar tarea -->
           <button type="submit"><i class="fas fa-plus"></i> Agregar / Actualizar</button>
         </div>
       </form>
     </section>
 
+    <!-- Sección donde se mostrarán las tareas -->
     <section class="tasks-section">
       <ul id="task-list"></ul>
     </section>
   </main>
 
+  <!-- Pie de página -->
   <footer>
     <p>© 2025 Gestor de Tareas SPA</p>
   </footer>
 
+  <!-- Contador de tareas -->
   <div id="task-count">Tareas: 0</div>
 
+  <!-- Enlazamos el archivo JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
